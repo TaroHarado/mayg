@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ru" class="dark">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>FAQ - mayhem.tax</title>
+    <meta name="description" content="Frequently asked questions about mayhem.tax"/>
+    <link rel="shortcut icon" href="logo.png"/>
+    <link rel="icon" href="logo.png" type="image/png" sizes="32x32"/>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.min.js"></script>
+    <style>
+        :root {
+            --primary: rgb(239, 68, 68);
+        }
+        .bg-primary {
+            background-color: var(--primary);
+        }
+        .text-primary {
+            color: var(--primary);
+        }
+        .border-primary {
+            border-color: var(--primary);
+        }
+        details summary {
+            cursor: pointer;
+        }
+        details summary::-webkit-details-marker {
+            display: none;
+        }
+        details[open] summary svg {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body class="min-h-screen antialiased bg-[#0B151C] text-zinc-100">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-30 w-full border-b border-white/10 bg-[#0B151C]/80 backdrop-blur">
+        <div class="mx-auto max-w-6xl px-4 h-14 grid grid-cols-3 items-center">
+            <div class="justify-self-start">
+                <a class="flex items-center gap-2" href="index.html">
+                    <img src="logo.png" alt="mayhem.tax" class="h-6 w-auto"/>
+                    <span class="text-sm font-semibold tracking-wide">mayhem.tax</span>
+                </a>
+            </div>
+            <div class="justify-self-center flex items-center gap-4 text-sm">
+                <div class="relative">
+                    <span class="pointer-events-none absolute left-1.5 top-1/2 -translate-y-1/2 text-zinc-400 z-10">
+                        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m21 21-4.35-4.35m1.85-5.15a7 7 0 1 1-14 0 7 7 0 0 1 14 0z"></path>
+                        </svg>
+                    </span>
+                    <input placeholder="Search tokens…" class="transition-all duration-200 w-24 md:w-64 cursor-text rounded-md bg-white/5 pl-7 pr-2 py-1.5 text-xs outline-none placeholder:text-zinc-500 border border-white/10 focus:border-primary/60" value=""/>
+                </div>
+                <a class="text-zinc-300 hover:text-white" href="index.html">Tokens</a>
+                <a class="text-zinc-300 hover:text-white" href="create.html">Launch</a>
+                <a class="text-zinc-300 hover:text-white" href="faq.html">FAQ</a>
+                <a class="text-zinc-300 hover:text-white" href="profile.html">Profile</a>
+            </div>
+            <div class="justify-self-end flex items-center gap-3">
+                <div id="walletInfo" class="flex items-center gap-2" style="display: none;"></div>
+                <a href="https://github.com/mayhem-tax/mayhem" target="_blank" rel="noopener noreferrer" aria-label="mayhem.tax on GitHub" class="text-zinc-300 hover:text-white transition-colors">
+                    <svg viewBox="0 0 24 24" class="h-5 w-5" fill="currentColor" aria-hidden="true">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                </a>
+                <button id="connectWalletBtn" onclick="connectWallet()" class="flex items-center gap-2 rounded-md bg-primary text-black hover:bg-primary/90 px-3 py-1.5 text-xs font-medium transition-colors">
+                    Connect
+                </button>
+                <a href="https://x.com/mayhem_tax" target="_blank" rel="noopener noreferrer" aria-label="mayhem.tax on X" class="text-zinc-300 hover:text-white transition-colors">
+                    <svg viewBox="0 0 24 24" class="h-5 w-5" fill="currentColor" aria-hidden="true">
+                        <path d="M18.244 2H21.5L13.31 11.255 23 22h-6.427l-5.399-6.202L5.05 22H1.785l8.847-10.201L1 2h6.438l5.13 5.85L18.244 2z"></path>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="mx-auto max-w-6xl px-4 pt-16">
+        <main class="pb-12 pt-6">
+            <div class="mt-3 max-w-3xl mx-auto space-y-3">
+                <details class="group rounded-lg border border-white/10 p-4 bg-white/[0.02]">
+                    <summary class="flex cursor-pointer list-none items-center justify-between text-base font-medium">
+                        <span>What is mayhem.tax?</span>
+                        <svg class="h-4 w-4 text-zinc-400 transition-transform" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M10 12a.75.75 0 0 1-.53-.22l-4-4a.75.75 0 1 1 1.06-1.06L10 10.19l3.47-3.47a.75.75 0 1 1 1.06 1.06l-4 4c-.14.14-.33.22-.53.22Z" clip-rule="evenodd"></path>
+                        </svg>
+                    </summary>
+                    <p class="mt-2 text-sm text-zinc-300">mayhem.tax is a layer built on top of the mayhem protocol that allows you to create tax tokens using the 2022 standard on pump.fun. The mayhem protocol enables random transactions, custom buy/sell taxes, and advanced token features.</p>
+                </details>
+                
+                <details class="group rounded-lg border border-white/10 p-4 bg-white/[0.02]">
+                    <summary class="flex cursor-pointer list-none items-center justify-between text-base font-medium">
+                        <span>What is the mayhem protocol?</span>
+                        <svg class="h-4 w-4 text-zinc-400 transition-transform" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M10 12a.75.75 0 0 1-.53-.22l-4-4a.75.75 0 1 1 1.06-1.06L10 10.19l3.47-3.47a.75.75 0 1 1 1.06 1.06l-4 4c-.14.14-.33.22-.53.22Z" clip-rule="evenodd"></path>
+                        </svg>
+                    </summary>
+                    <p class="mt-2 text-sm text-zinc-300">mayhem is an upcoming protocol from pump.fun that will transition to the 2022 standard, allowing for random transactions, custom buy/sell tax rates, and other advanced token mechanics.</p>
+                </details>
+                
+                <details class="group rounded-lg border border-white/10 p-4 bg-white/[0.02]">
+                    <summary class="flex cursor-pointer list-none items-center justify-between text-base font-medium">
+                        <span>When will mayhem.tax launch?</span>
+                        <svg class="h-4 w-4 text-zinc-400 transition-transform" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M10 12a.75.75 0 0 1-.53-.22l-4-4a.75.75 0 1 1 1.06-1.06L10 10.19l3.47-3.47a.75.75 0 1 1 1.06 1.06l-4 4c-.14.14-.33.22-.53.22Z" clip-rule="evenodd"></path>
+                        </svg>
+                    </summary>
+                    <p class="mt-2 text-sm text-zinc-300">mayhem.tax will launch once pump.fun officially deploys the mayhem contract. Until then, the platform is in preparation mode.</p>
+                </details>
+                
+                <details class="group rounded-lg border border-white/10 p-4 bg-white/[0.02]">
+                    <summary class="flex cursor-pointer list-none items-center justify-between text-base font-medium">
+                        <span>What are tax tokens?</span>
+                        <svg class="h-4 w-4 text-zinc-400 transition-transform" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M10 12a.75.75 0 0 1-.53-.22l-4-4a.75.75 0 1 1 1.06-1.06L10 10.19l3.47-3.47a.75.75 0 1 1 1.06 1.06l-4 4c-.14.14-.33.22-.53.22Z" clip-rule="evenodd"></path>
+                        </svg>
+                    </summary>
+                    <p class="mt-2 text-sm text-zinc-300">Tax tokens are tokens that charge a percentage fee on each buy and/or sell transaction. These fees can be used for various purposes like liquidity, rewards, or project development.</p>
+                </details>
+                
+                <details class="group rounded-lg border border-white/10 p-4 bg-white/[0.02]">
+                    <summary class="flex cursor-pointer list-none items-center justify-between text-base font-medium">
+                        <span>What is the 2022 standard?</span>
+                        <svg class="h-4 w-4 text-zinc-400 transition-transform" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M10 12a.75.75 0 0 1-.53-.22l-4-4a.75.75 0 1 1 1.06-1.06L10 10.19l3.47-3.47a.75.75 0 1 1 1.06 1.06l-4 4c-.14.14-.33.22-.53.22Z" clip-rule="evenodd"></path>
+                        </svg>
+                    </summary>
+                    <p class="mt-2 text-sm text-zinc-300">The 2022 standard refers to a token standard on Solana that supports advanced features like transfer hooks, which enable tax mechanisms and other programmable behaviors.</p>
+                </details>
+                
+                <details class="group rounded-lg border border-white/10 p-4 bg-white/[0.02]">
+                    <summary class="flex cursor-pointer list-none items-center justify-between text-base font-medium">
+                        <span>Can I set custom tax rates?</span>
+                        <svg class="h-4 w-4 text-zinc-400 transition-transform" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M10 12a.75.75 0 0 1-.53-.22l-4-4a.75.75 0 1 1 1.06-1.06L10 10.19l3.47-3.47a.75.75 0 1 1 1.06 1.06l-4 4c-.14.14-.33.22-.53.22Z" clip-rule="evenodd"></path>
+                        </svg>
+                    </summary>
+                    <p class="mt-2 text-sm text-zinc-300">Yes, you can set separate buy and sell tax rates (0-25% each) when launching your token. You can also enable random tax variations for additional functionality.</p>
+                </details>
+                
+                <details class="group rounded-lg border border-white/10 p-4 bg-white/[0.02]">
+                    <summary class="flex cursor-pointer list-none items-center justify-between text-base font-medium">
+                        <span>What are random transactions?</span>
+                        <svg class="h-4 w-4 text-zinc-400 transition-transform" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M10 12a.75.75 0 0 1-.53-.22l-4-4a.75.75 0 1 1 1.06-1.06L10 10.19l3.47-3.47a.75.75 0 1 1 1.06 1.06l-4 4c-.14.14-.33.22-.53.22Z" clip-rule="evenodd"></path>
+                        </svg>
+                    </summary>
+                    <p class="mt-2 text-sm text-zinc-300">Random transactions are a feature of the mayhem protocol that allows for randomized tax rates or other behaviors, adding unpredictability and unique mechanics to your token.</p>
+                </details>
+            </div>
+        </main>
+    </div>
+    <script src="wallet.js"></script>
+</body>
+</html>
+
